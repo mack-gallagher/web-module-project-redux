@@ -4,20 +4,20 @@ import { useParams, useHistory } from 'react-router-dom';
 import { deleteMovie, DELETE_MOVIE } from '../actions/movieActions.js';
 import { connect } from 'react-redux';
 
+import { addFavorite, ADD_FAVORITE } from '../actions/favoritesActions.js';
+
 const mapStateToProps = state => {
   return {
-           movies: state.movies,
+           movies: state.movies.movies,
+           displayFavorites: state.favorites.displayFavorites,
          }
 }
-
 
 const Movie = (props) => {
 
     const { movies, dispatch } = props;
 
     const { id } = useParams();
-
-    console.log(movies);
 
     const movie = movies.filter(movie=>movie.id===parseInt(id))[0];
 
@@ -58,7 +58,12 @@ const Movie = (props) => {
                         </section>
                         
                         <section>
-                            <span className="m-2 btn btn-dark">Favorite</span>
+                            <span 
+                              className="m-2 btn btn-dark"
+                              onClick={() => dispatch(addFavorite(movie))}
+                            >
+                              Favorite
+                            </span>
                             <span className="delete">
                               <input 
                                 type="button" 

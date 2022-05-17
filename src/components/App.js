@@ -13,8 +13,16 @@ import FavoriteMovieList from './FavoriteMovieList';
 
 import movies from '../data.js';
 
+const mapStateToProps = (state) => {
+  return {
+           ...state,
+           displayFavorites: state.favorites.displayFavorites,
+         }
+}
+
 const App = props => {
-  const displayFavorites = true;
+
+  const { displayFavorites } = props;
 
   return (
     <div>
@@ -50,4 +58,4 @@ const App = props => {
   );
 };
 
-export default App;
+export default connect(mapStateToProps)(App);

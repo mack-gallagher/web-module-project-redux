@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
   return {
-           movies: state.movies,
+           movies: state.movies.movies,
          }
 }
 
