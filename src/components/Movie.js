@@ -1,10 +1,25 @@
 import React from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 
+
+const mapStateToProps = state => {
+  return {
+           movies: state.movies,
+         }
+}
+
+import { connect } from 'react-redux';
+
 const Movie = (props) => {
-    const { movie } = props;
+
+    const { movies } = props;
 
     const { id } = useParams();
+
+    console.log(movies);
+
+    const movie = movies.filter(movie=>movie.id===parseInt(id))[0];
+
     const { push } = useHistory();
 
     return(<div className="modal-page col">
@@ -46,4 +61,4 @@ const Movie = (props) => {
     </div>);
 }
 
-export default Movie;
+export default connect(mapStateToProps,{})(Movie);
