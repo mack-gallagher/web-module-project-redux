@@ -11,6 +11,8 @@ import MovieHeader from './MovieHeader';
 import AddMovieForm from './AddMovieForm';
 import FavoriteMovieList from './FavoriteMovieList';
 
+import movies from '../data.js';
+
 const App = props => {
   const displayFavorites = true;
 
@@ -35,7 +37,7 @@ const App = props => {
             </Route>
 
             <Route path="/movies">
-              <MovieList/>
+              <MovieList movies={movies} />
             </Route>
 
             <Route path="/">
